@@ -9,7 +9,7 @@ namespace IziTradeOff.Application.Interfaces.Services.Query
 {
     public interface ILoginQuery
     {
-        Task<List<string>> ObtenerRolesPorUsuario(string userName);
+      
         Task<UsuarioDto> UsuarioActual();
     }
 }

@@ -10,5 +10,6 @@ namespace IziTradeOff.Application.Interfaces.Services.Command
     {
         Task<UsuarioDto> Registar(UsuarioDto usuarioDto);
         Task<UsuarioDto> Login(string Email, string Password);
+        
     }
 }

@@ -32,21 +32,7 @@ namespace IziTradeOff.Service.Query
             _usuarioSesion = usuarioSesion;
             _jwtGenerador = jwtGenerador;
         }
-        /// <summary>
-        /// Metodo que  obtiene los roles por usuario
-        /// </summary>
-        public async Task<List<string>> ObtenerRolesPorUsuario(string userName)
-        {
-            var usuarioIden = await userManager.FindByNameAsync(userName);
-            if (usuarioIden == null)
-            {
-                throw new ExceptionBase(HttpStatusCode.NotFound, new { Mensaje = "No existe el Usuario" });
-            }
-
-            var resultado = await userManager.GetRolesAsync(usuarioIden);
-            return new List<string>(resultado);
-
-        }
+       
 
         /// <summary>
         /// Metodo que obtiene el usuario actual

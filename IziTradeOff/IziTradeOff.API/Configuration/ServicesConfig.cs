@@ -19,9 +19,11 @@ namespace IziTradeOff.API.Configuration
             //Querys
             services.AddScoped<ITraductorQuery, TraduccionQuery>();
             services.AddScoped<ILoginQuery, LoginQuery>();
+            services.AddScoped<IRolQuery, RolQuery>();
             //Commands
             services.AddScoped<ITraductorCommand, TraduccionCommand>();
             services.AddScoped<ILoginCommand, LoginCommand>();
+            services.AddScoped<IRolCommand, RolCommand>();
         }
     }
 }
