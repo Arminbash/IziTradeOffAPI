@@ -3,14 +3,16 @@ using System;
 using IziTradeOff.Persistence.Connection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IziTradeOff.Persistence.Migrations
 {
     [DbContext(typeof(IConexion))]
-    partial class IConexionModelSnapshot : ModelSnapshot
+    [Migration("20221103002905_TablePersona20221102")]
+    partial class TablePersona20221102
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

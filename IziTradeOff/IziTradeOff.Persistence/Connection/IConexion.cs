@@ -15,7 +15,11 @@ namespace IziTradeOff.Persistence.Connection
         }
         //Lista de tablas
         public virtual DbSet<Traduccion> Traduccion { get; set; }
-       
+        public virtual DbSet<TipoPersona> TipoPersona { get; set; }
+        public virtual DbSet<Persona> Persona { get; set; }
+        public virtual DbSet<TipoCliente> TipoCliente { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Empleado> Empleado { get; set; }
 
         /// <summary>
         /// Sobreescritura del model creating

@@ -14,6 +14,8 @@ namespace IziTradeOff.Application.Dtos
         public MappingProfiles()
         {
             CreateMap<Traduccion, TraduccionDto>().ReverseMap();
+            CreateMap<TipoPersona, TipoPersonaDto>().ReverseMap();
+            CreateMap<Persona, PersonaDto>().ReverseMap();
         }
     }
 }

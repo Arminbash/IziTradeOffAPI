@@ -16,6 +16,7 @@ namespace IziTradeOff.Persistence.FluentApi
         public void Map(ref ModelBuilder modelBuilder)
         {
             new TraduccionConfiguration().Configure(modelBuilder.Entity<Traduccion>());
+            new TipoPersonaConfiguration().Configure(modelBuilder.Entity<TipoPersona>());
         }
     }
 }

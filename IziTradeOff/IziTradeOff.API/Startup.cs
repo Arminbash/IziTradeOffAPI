@@ -38,6 +38,7 @@ namespace IziTradeOff.API
             services.AddTransient<ErrorMiddleware>();
 
             services.AddValidatorsFromAssembly(typeof(Service.Validator.TraductorValidator).Assembly);
+            services.AddValidatorsFromAssembly(typeof(Service.Validator.TipoPersonaValidator).Assembly);
 
             //Configuracion del dapper
             DapperConfig.Config(Configuration, services);
