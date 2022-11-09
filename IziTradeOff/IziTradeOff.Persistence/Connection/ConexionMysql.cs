@@ -24,6 +24,9 @@ namespace IziTradeOff.Persistence.Connection
         public IConexion CreateDbContext(string[] args)
         {
             var connectionString = SingletonConexiones.ConnectionString;
+            //Activar esta opcion solo para hacer migracion, ya que si se deja activa no conectara con la bd al ejecutar
+            //connectionString = "server=localhost;port=3306;database=IziTradeOffDB;user=miguser;password=12345Abc@~;old guids=true;default command timeout=800;CharSet=utf8;pooling=false;AllowUserVariables=True;";
+            //---------------------------------------------
             var optionsBuilder = new DbContextOptionsBuilder<IConexion>();
             var serverVersion = ServerVersion.AutoDetect(connectionString);
             optionsBuilder.UseMySql<IConexion>(connectionString, mysqlOptions =>

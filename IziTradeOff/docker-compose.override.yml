@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  izitradeoff.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Services__ServicesAPI=http://izitradeoff.servicesapi
+    ports:
+      - "6105:80"
+
+  izitradeoff.servicesapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6104:80"

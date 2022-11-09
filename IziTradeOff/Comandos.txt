@@ -1,0 +1,61 @@
+--Docker Config
+wsl --install
+
+docker image list
+docker container list
+docker container list -a
+docker pull nginx:1.18.0
+docker run -it nginx:1.18.0 /bin/bash
+docker exit
+docker rm 8e8
+
+docker pull mysql:lastest
+docker run --name mysql-izitradeoff -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345 mysql
+docker exec -it mysql-izitradeoff bash
+
+docker start mysql-izitradeoff
+
+docker network create izitradeoffnetwork
+docker network list
+docker network connect izitradeoffnetwork mysql-izitradeoff
+docker network connect izitradeoffnetwork IziTradeOff.ServicesAPI
+docker network connect izitradeoffnetwork IziTradeOff.API
+docker network inspect izitradeoffnetwork
+
+--MYSQL
+mysql -uroot -p12345
+CREATE USER 'itouser'@'%' IDENTIFIED BY '12345Abc@~';
+GRANT ALL PRIVILEGES ON *.* TO 'itouser'@'%' with grant option;
+flush privileges;
+exit;
+mysql -uitouser -p12345Abc@~
+create database IziTradeOffDB;
+use IziTradeOffDB;
+CREATE TABLE __EFMigrationsHistory(
+MigrationId varchar(150) not null primary key,
+ProductVersion varchar(32) not null
+);
+show tables;
+
+--Crear este usuario para migrar
+CREATE USER 'miguser'@'172.17.0.1' IDENTIFIED BY '12345Abc@~';
+GRANT ALL PRIVILEGES ON *.* TO 'miguser'@'172.17.0.1' with grant option;
+flush privileges;
+--luego de migrar borrar el usuario
+Drop user 'miguser'@'172.17.0.1';
+
+
+--Dotnet EF
+cd izitradeoff.persistence
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+--RabbitMQ --guest
+
+docker pull rabbitmq
+docker run -d --hostname mi-rabbit-server --name rabbit-izitradeoff rabbitmq:3
+docker run -d --hostname mi-rabbit-server --name rabbit-izitradeoff-web -p 15672:15672 rabbitmq:3-management
+
+docker network connect izitradeoffnetwork rabbit-izitradeoff
+docker network connect izitradeoffnetwork rabbit-izitradeoff-web
+docker network inspect izitradeoffnetwork

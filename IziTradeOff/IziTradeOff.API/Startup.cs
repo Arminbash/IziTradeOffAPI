@@ -38,7 +38,7 @@ namespace IziTradeOff.API
             services.AddTransient<ErrorMiddleware>();
 
             services.AddValidatorsFromAssembly(typeof(Service.Validator.TraductorValidator).Assembly);
-       
+
             //Configuracion del dapper
             DapperConfig.Config(Configuration, services);
 
@@ -59,6 +59,11 @@ namespace IziTradeOff.API
 
             //Configuracion de los servicios
             ServicesConfig.Config(Configuration, services);
+
+            services.AddHttpClient("ServicesAPI", config =>
+            {
+                config.BaseAddress = new Uri(Configuration["Services:ServicesAPI"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

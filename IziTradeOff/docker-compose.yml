@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  izitradeoff.api:
+    image: ${DOCKER_REGISTRY-}izitradeoffapi
+    build:
+      context: .
+      dockerfile: IziTradeOff.API/Dockerfile
+  izitradeoff.servicesapi:
+    image: ${DOCKER_REGISTRY-}izitradeoffservicesapi
+    build:
+      context: .
+      dockerfile: IziTradeOff.ServicesAPI/Dockerfile
+
+networks:
+    default:
+        external:
+            name: izitradeoffnetwork
