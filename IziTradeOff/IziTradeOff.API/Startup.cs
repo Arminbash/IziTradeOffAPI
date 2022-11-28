@@ -96,7 +96,7 @@ namespace IziTradeOff.API
 
             //Swagger
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MaranathaCargoExpres-Api v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "IziTradeOff-Api v1"));
         }
     }
 }
